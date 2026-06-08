@@ -26,9 +26,20 @@ function Login() {
       }
     } catch (err) {
       if (err.response && err.response.data) {
-        setErro(err.response.data.mensagem || 'Credenciais inválidas');
+    
+        if (err.response.data.mensagem === "Senha incorreta") {
+          setErro("Senha incorreta");
+
+        } 
+        else if(err.response.data.mensagem === "Usuário não encontrado"){
+          setErro("Usuário não encontrado");
+        }
+        else {
+          setErro(err.response.data.mensagem || "Erro desconhecido");
+        }
+
       } else {
-        setErro('Erro ao conectar com o servidor');
+        setErro("Erro ao conectar com o servidor");
       }
     }
   };
