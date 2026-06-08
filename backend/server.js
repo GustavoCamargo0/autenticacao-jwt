@@ -20,12 +20,10 @@ app.get('/home', (request, response) => {
     return response.send("Bem-vindo à nossa API!");
 });
 
-// 3. Rota de Login que o Axios vai chamar
+
 app.post('/login', async (request, response) => {
     const { email, senha } = request.body;
 
-    // 🔍 LINHA DE DIAGNÓSTICO:
-    // Copie o código que aparecerá no seu terminal e substitua no 'senhaHash' lá em cima
     const hashGerado = await bcrypt.hash(senha, 10);
     console.log(`Hash gerado para a senha "${senha}":`, hashGerado);
 
