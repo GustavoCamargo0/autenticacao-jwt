@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Importando o axios
+import { Link } from "react-router-dom";
 
 function Registro() {
   const [nome, setNome] = useState("");
@@ -94,6 +95,7 @@ function Registro() {
         {erro && <p style={{ color: "red" }}>{erro}</p>}
         <button type="submit">Entrar</button>
       </form>
+      <Link to={'/login'}>Já tem conta? faça login</Link>
     </div>
   );
 }

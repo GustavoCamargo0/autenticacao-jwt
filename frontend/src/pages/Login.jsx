@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Importando o axios
+import axios from 'axios'; 
+import { Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -20,9 +21,9 @@ function Login() {
       const token = resposta.data.token;
 
       if (token) {
-        localStorage.setItem('token', token); // Guardando o JWT 
+        localStorage.setItem('token', token); 
         setErro('');
-        navigate('/dashboard'); //  Redirecionando para a rota protegida
+        navigate('/dashboard'); 
       }
     } catch (err) {
       if (err.response && err.response.data) {
@@ -59,6 +60,7 @@ function Login() {
         {erro && <p style={{ color: 'red' }}>{erro}</p>}
         <button type="submit">Entrar</button>
       </form>
+      <Link to={'/registro'}>Não tem conta? Se cadastre</Link>
     </div>
   );
 }
